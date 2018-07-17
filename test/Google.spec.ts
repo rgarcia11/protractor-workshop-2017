@@ -1,12 +1,12 @@
 import { browser } from 'protractor';
 
 describe('Given a SDET learning protractor', () => {
-    describe('when open a Google Page', () => {
-        beforeEach(async () => {
-            await browser.get('http://www.google.com');
-        });
-        it('should have a title', async () => {
-            await expect(browser.getTitle()).toEqual('Google');
-        });
+  describe('when open a Google Page', () => {
+    beforeEach(async () => {
+      await browser.get('http://www.google.com');
     });
+    it('should have a title', async () => {
+      await expect(browser.getTitle()).toEqual('Google');
+    });
+  });
 });
