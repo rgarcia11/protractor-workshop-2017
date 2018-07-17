@@ -3,6 +3,8 @@ cache:
 directories:
 - node_modules
 notifications:
+os:
+  - windows
 email: false
 node_js:
 - '7'
