@@ -4,7 +4,7 @@
   "description": "This is a workshop about Protractor",
   "main": "index.js",
   "scripts": {
-    "clean": "rd /s /q dist",
+    "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
     "lint": "tslint --type-check --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts",
