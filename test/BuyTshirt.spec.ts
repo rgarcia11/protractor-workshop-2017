@@ -1,43 +1,57 @@
-import { $, browser } from 'protractor';
+import { browser } from 'protractor';
+import { MenuContentPage } from '../src/page';
+import { ProductDetailPage } from '../src/page/ProductDetail.page';
+import { ProductAddedModalPage } from '../src/page/ProductAddedModal.page';
+import { SummaryStepPage } from '../src/page/SummaryStep.page';
+import { SignInStepPage } from '../src/page/SignInStep.page';
+import { AddressStepPage } from '../src/page/AddressStep.page';
+import { ShippingStepPage } from '../src/page/ShippingStep.page';
+import { PaymentStepPage } from '../src/page/PaymentStep.page';
+import { BankPaymentPage } from '../src/page/BankPayment.page';
+import { OrderResumePage } from '../src/page/OrderResume.page';
 
 describe('Buy a t-shirt', () => {
+    const menuContentPage: MenuContentPage = new MenuContentPage();
+    const productDetailPage: ProductDetailPage = new ProductDetailPage();
+    const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+    const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+    const signInStepPage: SignInStepPage = new SignInStepPage();
+    const addressStepPage: AddressStepPage = new AddressStepPage();
+    const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+    const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+    const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+    const orderResume: OrderResumePage = new OrderResumePage();
+
     beforeEach(() => {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
     });
+    
     it('then should be bought a t-shirt', async () => {
         await browser.get('http://automationpractice.com/');
-        await(browser.sleep(10000));
-        await $('#block_top_menu > ul > li:nth-child(3) > a').click();
         await(browser.sleep(3000));
-        await
-        $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img').click();
+        await menuContentPage.goToTShirtMenu();
         await(browser.sleep(3000));
-        await $('#add_to_cart > button > span').click();
+        await productDetailPage.goToTShirtDetailMenu();
         await(browser.sleep(3000));
-        await $('[style*="display: block;"] .button-container > a').click();
+        await productAddedModalPage.goToAddedItemMenu();
         await(browser.sleep(3000));
-        await $('.cart_navigation span').click();
+        await summaryStepPage.goToSummaryMenu()
         await(browser.sleep(3000));
-       
-        await $('#email').sendKeys('aperdomobo@gmail.com');
-        await $('#passwd').sendKeys('WorkshopProtractor');
-        await $('#SubmitLogin > span').click();
+        await signInStepPage.goToSignInMenu();
         await(browser.sleep(3000));
-       
-        await $('#center_column > form > p > button > span').click();
+        await signInStepPage.fillSignInMenu();
         await(browser.sleep(3000));
-     
-        await $('#cgv').click();
+        await addressStepPage.goToAddressMenu();
         await(browser.sleep(3000));
-     
-        await $('#form > p > button > span').click();
+        await shippingStepPage.goToShippingMenu();
         await(browser.sleep(3000));
-        await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
+        await paymentStepPage.goToPaymentMenu();
         await(browser.sleep(3000));
-        await $('#cart_navigation > button > span').click();
+        await bankPaymentPage.goToBankPaymentMenu();
         await(browser.sleep(3000));
-     
-        await expect($('#center_column > div > p > strong').getText())
+        await orderResume.goToOrderResume();
+        await(browser.sleep(3000));
+        await expect(orderResume.getOrderResumeStatus())
           .toBe('Your order on My Store is complete.');
       });
 });
