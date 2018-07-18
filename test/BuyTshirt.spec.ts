@@ -21,7 +21,6 @@ describe('Buy a t-shirt', () => {
   const productDetailPage: ProductDetailPage = new ProductDetailPage();
   const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
   const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-
   it('should select a tshit to buy.', async () => {
     await menuContentPage.goToTShirtMenu();
     await(browser.sleep(3000));
