@@ -14,7 +14,7 @@ describe('Open a browser page', () => {
   it('should open', async () => {
     await browser.get('http://automationpractice.com/');
   });
-
+  
   describe('Buy a t-shirt', () => {
     const menuContentPage: MenuContentPage = new MenuContentPage();
     const productDetailPage: ProductDetailPage = new ProductDetailPage();
