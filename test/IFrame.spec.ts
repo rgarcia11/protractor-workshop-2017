@@ -13,4 +13,12 @@ describe('Changes IFrame height', () => {
         await iFramePage.changeIFrame1Height(100, 'IF1');
         await expect(iFramePage.getIFrame1Height()).toBe(100);
     });
+
+    it('should have a title', async () => {
+        await expect(iFramePage.getH1SampleTitle()).toBe('Sample Iframe page')
+        await iFramePage.switchToIFrame1();
+        await expect(iFramePage.getH1SampleTitle()).toBe('Practice Automation Form')
+        await iFramePage.switchToPage();
+        await expect(iFramePage.getH1SampleTitle()).toBe('Sample Iframe page')
+    });
 });
