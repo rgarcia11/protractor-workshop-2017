@@ -17,9 +17,18 @@ export class PersonalInformationPage {
         return $(`[name="exp"][value="${expToFill}"`);
     }
 
-    //private profession(professionToFill: String): ElementFinder {
-    //    return $(``);
+    private profession(professionToFill: String): ElementFinder {
+        return $(`[name="profession"][value="${professionToFill}"]`);
+    }
+
+    private tool(toolToFill: String): ElementFinder {
+        return $(`[name="tool"][value="${toolToFill}"]`);
+    }
+
+    //private continent(continent: String): ElementFinder {
+    //    return $(`#continents`).filter();
     //}
+    
     //
     //private get submit(): ElementFinder {
     //    return $('#submit');
@@ -31,9 +40,13 @@ export class PersonalInformationPage {
         await this.lastName.sendKeys(informationToFill.lastName);
         await this.sex(informationToFill.sex).click();
         await this.experience(informationToFill.experience).click();
-        //*await this.profession.sendKeys(informationToFill.profession);
-        //*await this.tools.sendKeys(informationToFill.tools);
-        //await this.continent.sendKeys(informationToFill.continent);
+        for (let professionToFill of informationToFill.profession) {
+            await this.profession(professionToFill).click();
+        }
+        for (let toolToFill of informationToFill.tools) {
+            await this.tool(toolToFill).click();
+        }
+        //await this.continent(informationToFill.continent).click();
         //*await this.commands.sendKeys(informationToFill.commands);
     }
 }

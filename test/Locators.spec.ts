@@ -19,7 +19,7 @@ describe('Opening a browser page', () => {
         lastName: 'Perdomo',
         sex: 'Male',
         experience: 7,
-        profession: ['Automation Tester'],
+        profession: ['Automation Tester', 'Manual Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
         commands: [
@@ -29,5 +29,6 @@ describe('Opening a browser page', () => {
           'Wait Commands',
           'WebElement Commands']
       });
+      await browser.sleep(5000);
  });
 });
