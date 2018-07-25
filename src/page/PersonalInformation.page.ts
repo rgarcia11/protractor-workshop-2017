@@ -1,4 +1,5 @@
 import { ElementFinder, $ } from 'protractor';
+import { resolve } from 'path';
 
 export class PersonalInformationPage {
   private get firstName(): ElementFinder {
@@ -37,7 +38,11 @@ export class PersonalInformationPage {
     return $('#submit');
   }
 
-  public async fillForm(informationToFill: any) {
+  private get chooseFile(): ElementFinder {
+    return $(`#photo`);
+  }
+
+  private async fillForm(informationToFill: any) {
     await this.firstName.sendKeys(informationToFill.firstName);
     await this.lastName.sendKeys(informationToFill.lastName);
     await this.sex(informationToFill.sex).click();
@@ -52,6 +57,15 @@ export class PersonalInformationPage {
     for (const commandToFill of informationToFill.tools) {
       await this.command().sendKeys(commandToFill);
     }
+  }
+
+  private async uploadProfilePicture(path) {
+    await this.chooseFile.sendKeys(resolve(__dirname, path));
+  }
+
+  public async submitForm(informationToFill: any) {
+    await this.fillForm(informationToFill);
+    await this.uploadProfilePicture(informationToFill.picture);
     await this.submit.click();
   }
 }
