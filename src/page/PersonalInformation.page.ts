@@ -39,7 +39,7 @@ export class PersonalInformationPage {
   }
 
   private get chooseFile(): ElementFinder {
-    return $(`#photo`)
+    return $(`#photo`);
   }
 
   private async fillForm(informationToFill: any) {
@@ -59,7 +59,7 @@ export class PersonalInformationPage {
     }
   }
 
-  private async uploadProfilePicture(path){
+  private async uploadProfilePicture(path) {
     await this.chooseFile.sendKeys(resolve(__dirname, path));
   }
 
