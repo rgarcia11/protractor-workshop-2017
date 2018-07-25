@@ -25,15 +25,18 @@ export class PersonalInformationPage {
         return $(`[name="tool"][value="${toolToFill}"]`);
     }
 
-    //private continent(continent: String): ElementFinder {
-    //    return $(`#continents`).filter();
-    //}
+    private continent(): ElementFinder {
+        return $(`#continents`);
+    }
+
+    private command(): ElementFinder {
+        return $(`#selenium_commands`);
+    }
     
-    //
-    //private get submit(): ElementFinder {
-    //    return $('#submit');
-    //}
-    //
+    
+    private get submit(): ElementFinder {
+        return $('#submit');
+    }
 
     public async fillForm(informationToFill: any) {
         await this.firstName.sendKeys(informationToFill.firstName);
@@ -46,7 +49,10 @@ export class PersonalInformationPage {
         for (let toolToFill of informationToFill.tools) {
             await this.tool(toolToFill).click();
         }
-        //await this.continent(informationToFill.continent).click();
-        //*await this.commands.sendKeys(informationToFill.commands);
+        await this.continent().sendKeys(informationToFill.continent);
+        for (let commandToFill of informationToFill.tools) {
+            await this.command().sendKeys(commandToFill);
+        }
+        await this.submit.click();
     }
 }
