@@ -1,7 +1,10 @@
-import { ElementFinder, $ } from 'protractor';
+import { ElementFinder, $, element, by } from 'protractor';
 import { resolve } from 'path';
+import { DownloadService } from '../service/Download.service';
 
 export class PersonalInformationPage {
+  downloadService: DownloadService = new DownloadService();
+
   private get firstName(): ElementFinder {
     return $(`[name="firstname"]`);
   }
@@ -63,9 +66,14 @@ export class PersonalInformationPage {
     await this.chooseFile.sendKeys(resolve(__dirname, path));
   }
 
+  private async download(linkText) {
+    return await this.downloadService.downloadFile(await element(by.linkText(linkText)).getAttribute('href'), linkText);
+  }
+
   public async submitForm(informationToFill: any) {
     await this.fillForm(informationToFill);
     await this.uploadProfilePicture(informationToFill.picture);
+    await this.download(informationToFill.downloadFile)
     await this.submit.click();
   }
 }
