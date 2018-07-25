@@ -14,7 +14,7 @@ describe('Opening a browser page', () => {
   });
 
   it('should fill the form', async () => {
-    await personalInformationPage.fillForm({
+    await personalInformationPage.submitForm({
       firstName: 'Alejandro',
       lastName: 'Perdomo',
       sex: 'Male',
@@ -27,7 +27,8 @@ describe('Opening a browser page', () => {
         'Navigation Commands',
         'Switch Commands',
         'Wait Commands',
-        'WebElement Commands']
+        'WebElement Commands'],
+      picture: './../../../resources/wallpaperPSL.jpg'
     });
     await browser.sleep(5000);
   });
