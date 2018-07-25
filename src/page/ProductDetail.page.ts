@@ -1,4 +1,4 @@
-import { $, ElementFinder, promise} from 'protractor';
+import { $, ElementFinder, promise } from 'protractor';
 
 export class ProductDetailPage {
   private get tShirtDetailMenu(): ElementFinder {
