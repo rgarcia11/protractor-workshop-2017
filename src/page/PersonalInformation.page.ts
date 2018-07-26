@@ -1,6 +1,7 @@
-import { ElementFinder, $, element, by } from 'protractor';
+import { ElementFinder, $, element, by, browser } from 'protractor';
 import { resolve } from 'path';
 import { DownloadService } from '../service/Download.service';
+import * as remote from 'selenium-webdriver/remote';
 
 export class PersonalInformationPage {
   downloadService: DownloadService = new DownloadService();
@@ -63,6 +64,7 @@ export class PersonalInformationPage {
   }
 
   private async uploadProfilePicture(path) {
+    browser.setFileDetector(new remote.FileDetector());
     await this.chooseFile.sendKeys(resolve(__dirname, path));
   }
 
