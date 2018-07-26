@@ -67,13 +67,15 @@ export class PersonalInformationPage {
   }
 
   private async download(linkText) {
-    return await this.downloadService.downloadFile(await element(by.linkText(linkText)).getAttribute('href'), linkText);
+    const link = await element(by.linkText(linkText))
+    .getAttribute('href');
+    return await this.downloadService.downloadFile(link, linkText);
   }
 
   public async submitForm(informationToFill: any) {
     await this.fillForm(informationToFill);
     await this.uploadProfilePicture(informationToFill.picture);
-    await this.download(informationToFill.downloadFile)
+    await this.download(informationToFill.downloadFile);
     await this.submit.click();
   }
 }
