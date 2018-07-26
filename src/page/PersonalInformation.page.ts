@@ -7,11 +7,11 @@ export class PersonalInformationPage {
   downloadService: DownloadService = new DownloadService();
 
   private get firstName(): ElementFinder {
-    return element(by.name("firstname"));
+    return element(by.name('firstname'));
   }
 
   private get lastName(): ElementFinder {
-    return element(by.name("lastname"));
+    return element(by.name('lastname'));
   }
 
   private sex(sexToFill: String): ElementFinder {
