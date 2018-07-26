@@ -1,48 +1,53 @@
-import { ElementFinder, $, element, by } from 'protractor';
+import { ElementFinder, element, by, browser } from 'protractor';
 import { resolve } from 'path';
 import { DownloadService } from '../service/Download.service';
+import * as remote from 'selenium-webdriver/remote';
 
 export class PersonalInformationPage {
   downloadService: DownloadService = new DownloadService();
 
   private get firstName(): ElementFinder {
-    return $(`[name="firstname"]`);
+    return element(by.name("firstname"));
   }
 
   private get lastName(): ElementFinder {
-    return $(`[name="lastname"]`);
+    return element(by.name("lastname"));
   }
 
   private sex(sexToFill: String): ElementFinder {
-    return $(`[name="sex"][value="${sexToFill}"]`);
+    return element(by.css(`[value="${sexToFill}"]`));
   }
 
   private experience(expToFill: number): ElementFinder {
-    return $(`[name="exp"][value="${expToFill}"`);
+    return element(by.css(`[name="exp"][value="${expToFill}"`));
   }
 
   private profession(professionToFill: String): ElementFinder {
-    return $(`[name="profession"][value="${professionToFill}"]`);
+    return element(by.css(`[name="profession"][value="${professionToFill}"]`));
   }
 
   private tool(toolToFill: String): ElementFinder {
-    return $(`[name="tool"][value="${toolToFill}"]`);
+    return element(by.css(`[name="tool"][value="${toolToFill}"]`));
   }
 
   private continent(): ElementFinder {
-    return $(`#continents`);
+    return element(by.css(`#continents`));
   }
 
   private command(): ElementFinder {
-    return $(`#selenium_commands`);
+    return element(by.css(`#selenium_commands`));
   }
 
   private get submit(): ElementFinder {
-    return $('#submit');
+    return element(by.css('#submit'));
   }
 
   private get chooseFile(): ElementFinder {
-    return $(`#photo`);
+    return element(by.css(`#photo`));
+  }
+
+  private downloadLink(linkText): ElementFinder {
+    return element(by.linkText(linkText));
   }
 
   private async fillForm(informationToFill: any) {
@@ -63,19 +68,19 @@ export class PersonalInformationPage {
   }
 
   private async uploadProfilePicture(path) {
+    browser.setFileDetector(new remote.FileDetector());
     await this.chooseFile.sendKeys(resolve(__dirname, path));
   }
 
-  private async download(linkText) {
-    const link = await element(by.linkText(linkText))
-    .getAttribute('href');
-    return await this.downloadService.downloadFile(link, linkText);
+  private async download(linkText, filename) {
+    const link = await this.downloadLink(linkText).getAttribute('href');
+    return await this.downloadService.downloadFile(link, filename);
   }
 
   public async submitForm(informationToFill: any) {
     await this.fillForm(informationToFill);
     await this.uploadProfilePicture(informationToFill.picture);
-    await this.download(informationToFill.downloadFile);
+    await this.download(informationToFill.downloadFile, informationToFill.downloadLocation);
     await this.submit.click();
   }
 }
