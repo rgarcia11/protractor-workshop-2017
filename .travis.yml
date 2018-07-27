@@ -1,14 +1,18 @@
 language: node_js
-cache:
+cache: 
 directories:
 - node_modules
-notifications:
+notifications: 
 email: false
 node_js:
 - '7'
-branches:
+branches: 
 except:
-- /^v\d+\.\d+\.\d+$/
+- "/^v\\d+\\.\\d+\\.\\d+$/"
 sudo: required
 addons:
   chrome: stable
+env:
+  global:
+  - secure: CmJ+/t2btOmrT8+2IONPKDDzSk3DgZe1QvLyjyaugEQv1f3wOwZXii+rmFeB34EQgdBDSg3gZWJxP7I3k4AYJAXQBKqRqdpj9jzFnNoIlAM4EDLchE5Y7iaFQbky8mTdIVvKfdTOv82T9pNkJUQ6RpWOwgCfXzYtG87elXtVboBjPRDjovpNVvAdnaVRN8RvmcKsmkHSeqU3c9AStAN6Pw99C1csmdzYN8Hoc9TMAxIVq+nT30TBf8yulEaOpznPrU3hSxLeoDdnl3RS5XeSWAsXfT8qMZMdhHqafapOOuqfqGo5flGJ4egCPfN/agaT3+tY4GpIEKatuA2Xvr5iavZwLSZbgZBtc8pgSFfr8taz+D/dpZloShZF3TpM1jRtVFY7VP3gNZRsyE1meVlqzAIdXq3Z/ppfBOtIEcYr05I6K9+W/7wr/cd2o8i50cak19fyCNUfG2TaC3d5MmkPng2YGXmsGUuRgYEKBtNeyuSMbRWea4EudAAdvUdRU5WmO/ERyRCMb7v0/MqwxCY1hrLYWoGdTqbRgr1xq5F1TZIyuvO6FQnqs+ITmv3ULXkHFRofFf3hIjS8yrF0veTKLYEFA0jbAHki7hBDgofDtVrapHvk/CJXTAgTnuFAo2d2C5lw0FB4HoCGCG61+ZhRc6mQxYlBwPqB+ihZSDbUlQk=
+  - secure: YOyoFkDETjaBZJnV1ps2hfEoeglq0yehr8/Nw6bP0rihPmJTQbFArWqKFb9iLowoemOofLqBvBSmdwqpiQzRTUDZE3yiw2r858lfhFhpYKpGdGd454DPyv5gUqh9gCkynT+Ff3BCmBl7QWMw2Tl2vHqchLBEEuE6cpX8pr9i0DZi2BW1zk13UfaRv8jO1ZiQG5nRelscLDySyn0sOweROav8SpCR1W1QucrzBZQWEG0jtUnDR9hwUhVPzdiGXdNiBTKnFL13s5UCB6axd4YJB5hQivSC7eMuThNMC/frbJGRAoUrul8AryYJPXmyKNkAGprJzNlUgHanVGNFSOYE7GimvxBaTXvpVipFFxweX8TJXpPyDqjEpOzfv/IAPM4+qEcvy373KU9+11OTnE3agQIXKa/iFsnsFIqdBEKrJ8Ih291+8t71TI1mIaQ3M7/e4s+WoIcQZYchtZ09JQ22dRTPT2JI0UOim7C3z7Hejrv8QC7EY7WqDO9VdNMrVRQMYdtl9RhlSDkA2/IIWZotTJklYNMCNE0sFnAWX+zD5AIV5qrtChUc/pIwGjCdUpbuzkVDGWSQMJTYrRuNzez3njsN2DMSYz1ddSp58cWZgWdti1kvWdfcfuwiolj1wAFeW9ruYJYKXGDIdW4XK2maCv2izeVRu1ChgQUs/r94NY4=

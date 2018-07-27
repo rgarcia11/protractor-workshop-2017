@@ -11,7 +11,8 @@
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test:all": "npm run build && protractor dist/protractor/config.js  && protractor dist/protractor/headless.config.js",
-    "test": "npm run test:headless",
+    "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
+    "test": "npm run test:saucelabs",
     "postinstall": "webdriver-manager update --gecko false"
   },
   "repository": {
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@types/jasminewd2": "^2.0.3",
+    "cross-env": "^5.2.0",
     "jasmine-awesome-report": "0.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "tslint": "^5.11.0",
