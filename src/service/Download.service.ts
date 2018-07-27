@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, createWriteStream } from 'fs';
+import { existsSync, mkdirSync, createWriteStream, readFileSync } from 'fs';
 import { get } from 'http';
 
 const path = `${__dirname}/../../../temp`;
@@ -14,7 +14,7 @@ export class DownloadService {
     get(link, response => response.pipe(file));
   }
 
-    // public readFileFromTemp(filename: string): Buffer {
-    //
-    // }
+  public readFileFromTemp(filename: string): Buffer {
+    return readFileSync(`${path}/${filename}`);
+  }
 }
