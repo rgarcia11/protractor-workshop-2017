@@ -31,19 +31,19 @@ export class PersonalInformationPage {
   }
 
   private continent(): ElementFinder {
-    return element(by.css(`#continents`));
+    return element(by.id(`continents`));
   }
 
   private command(): ElementFinder {
-    return element(by.css(`#selenium_commands`));
+    return element(by.id(`selenium_commands`));
   }
 
   private get submit(): ElementFinder {
-    return element(by.css('#submit'));
+    return element(by.id('submit'));
   }
 
   private get chooseFile(): ElementFinder {
-    return element(by.css(`#photo`));
+    return element(by.id(`photo`));
   }
 
   private downloadLink(linkText): ElementFinder {
