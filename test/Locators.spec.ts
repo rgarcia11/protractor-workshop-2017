@@ -4,6 +4,7 @@ import { IFramePage } from '../src/page/IFrame.page';
 
 describe('Opening a browser page', () => {
   const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+  const locationToDownload = 'Test-File-to-Download.xlsx';
   const iFramePage: IFramePage = new IFramePage();
   it('should open', async () => {
     await browser.get('http://toolsqa.com/automation-practice-form');
@@ -30,8 +31,13 @@ describe('Opening a browser page', () => {
         'WebElement Commands'],
       picture: './../../../resources/wallpaperPSL.jpg',
       downloadFile: 'Test File to Download',
-      downloadLocation: 'Test-File-to-Download.xlsx'
+      downloadLocation: locationToDownload
     });
+
+    it('should download the file', async () => {
+      await expect(personalInformationPage.checkDownload(locationToDownload).byteLength)
+      .toBeGreaterThan(0);
+    })
     await browser.sleep(5000);
   });
 });

@@ -77,8 +77,8 @@ export class PersonalInformationPage {
     return await this.downloadService.downloadFile(link, filename);
   }
 
-  public async checkDownload(filename) {
-    return await this.downloadService.readFileFromTemp(filename);
+  public checkDownload(filename) {
+    return this.downloadService.readFileFromTemp(filename);
   }
 
   public async submitForm(informationToFill: any) {
