@@ -1,13 +1,16 @@
 import { existsSync, mkdirSync, createWriteStream } from 'fs';
 import { get } from 'http';
 
+const path = `${__dirname}/../../../temp`;
+
 export class DownloadService {
-  public async downloadFile(link: string, filename): Promise<void> {
-    if (!existsSync(`${__dirname}/../../../temp`)) {
-      mkdirSync(`${__dirname}/../../../temp`);
+
+  public async downloadFile(link, filename): Promise<void> {
+    if (!existsSync(path)) {
+      mkdirSync(path);
     }
 
-    const file = createWriteStream(`${__dirname}/../../../temp/${filename}`);
+    const file = createWriteStream(`${path}/${filename}`);
     get(link, response => response.pipe(file));
   }
 

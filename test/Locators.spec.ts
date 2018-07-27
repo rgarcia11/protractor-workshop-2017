@@ -29,7 +29,8 @@ describe('Opening a browser page', () => {
         'Wait Commands',
         'WebElement Commands'],
       picture: './../../../resources/wallpaperPSL.jpg',
-      downloadFile: 'Test File to Download'
+      downloadFile: 'Test File to Download',
+      downloadLocation: 'Test-File-to-Download.xlsx'
     });
     await browser.sleep(5000);
   });
