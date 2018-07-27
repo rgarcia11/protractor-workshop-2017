@@ -33,11 +33,9 @@ describe('Opening a browser page', () => {
       downloadFile: 'Test File to Download',
       downloadLocation: locationToDownload
     });
-
-    it('should download the file', async () => {
-      await expect(personalInformationPage.checkDownload(locationToDownload).byteLength)
-      .toBeGreaterThan(0);
-    })
-    await browser.sleep(5000);
   });
+  it('should download the file', async () => {
+    await expect(personalInformationPage.checkDownload(locationToDownload).byteLength)
+    .toBeGreaterThan(0);
+  })
 });
