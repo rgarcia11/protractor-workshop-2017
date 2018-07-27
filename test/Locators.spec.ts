@@ -29,7 +29,12 @@ describe('Opening a browser page', () => {
         'Wait Commands',
         'WebElement Commands'],
       picture: './../../../resources/wallpaperPSL.jpg',
+<<<<<<< saucelabs-multicapabilities
       downloadFile: 'Test File to Download'
+=======
+      downloadFile: 'Test File to Download',
+      downloadLocation: 'Test-File-to-Download.xlsx'
+>>>>>>> master
     });
     await browser.sleep(5000);
   });
